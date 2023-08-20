@@ -1,6 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getAllContacts, addContact, deleteContact } from './operations';
-import { handleAddContactFulfilled, handleDeleteContactFulfilled, handleError, handleFulfilled, handleGetAllContactsFulfilled, handlePending } from 'helpers/handlers';
+import {
+  getAllContacts,
+  addContact,
+  deleteContact,
+} from './contacts-operations';
+import {
+  handleAddContactFulfilled,
+  handleDeleteContactFulfilled,
+  handleError,
+  handleFulfilled,
+  handleGetAllContactsFulfilled,
+  handlePending,
+} from 'helpers/handlers';
 
 const contactsSlice = createSlice({
   name: 'contacts',

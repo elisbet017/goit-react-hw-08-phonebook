@@ -1,8 +1,8 @@
 import React from 'react';
 import { Field, Input } from '../Form/Form.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from 'redux/filterSlice';
-import { getFilter } from 'redux/selectors';
+import { setFilter } from 'redux/contacts/filter-slice';
+import { getFilter } from 'redux/contacts/contacts-selectors';
 
 const Filter = () => {
   const filter = useSelector(getFilter);

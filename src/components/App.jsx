@@ -1,27 +1,32 @@
-import ContactForm from './Form';
-import ContactList from './ContactsList';
-import Filter from './Filter';
-import { Block } from './App.styled';
-import { GlobalStyles } from '../utils/GlobalStyles';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getAllContacts } from 'redux/operations';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from 'pages/HomePage';
+import LoginPage from 'pages/LoginPage';
+import RegisterPage from 'pages/RegisterPage';
+import { getCurrentUser } from 'redux/auth/auth-operations';
+import { SharedLayout } from './SharedLayout/SharedLayout';
 
 export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllContacts());
+    dispatch(getCurrentUser());
   }, [dispatch]);
 
   return (
-    <Block>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
-      <GlobalStyles />
-    </Block>
+    <>
+      <SharedLayout />
+      <Routes>
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/contacts" element={<HomePage />} />
+      </Routes>
+    </>
   );
 };
+// лоадер додати
+// в аус-слайсі додати обробку помилок і пендінга через матчер
+// обробити помилки
+// почистити папки
+// почистити код
