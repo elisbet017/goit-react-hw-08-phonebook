@@ -1,6 +1,8 @@
 import {
   Button,
   Flex,
+  FormControl,
+  FormLabel,
   Input,
   InputGroup,
   InputRightElement,
@@ -49,38 +51,32 @@ const RegisterPage = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <FormControl onSubmit={handleSubmit} isRequired>
         <InputGroup gap="20px" justifyContent="center">
-          <label>
-            Name
-            <Input
-              type="text"
-              name="name"
-              value={user.name}
-              onChange={handleValueChange}
-              placeholder="Name"
-            />
-          </label>
-          <label>
-            Email
-            <Input
-              type="email"
-              name="email"
-              value={user.email}
-              onChange={handleValueChange}
-              placeholder="Email"
-            />
-          </label>
-          <label>
-            Password
-            <Input
-              type={show ? 'text' : 'password'}
-              name="password"
-              value={user.password}
-              onChange={handleValueChange}
-              placeholder="Password"
-            />
-          </label>
+          <FormLabel>Name</FormLabel>
+          <Input
+            type="text"
+            name="name"
+            value={user.name}
+            onChange={handleValueChange}
+            placeholder="Name"
+          />
+          <FormLabel>Email</FormLabel>
+          <Input
+            type="email"
+            name="email"
+            value={user.email}
+            onChange={handleValueChange}
+            placeholder="Email"
+          />
+          <FormLabel>Password</FormLabel>
+          <Input
+            type={show ? 'text' : 'password'}
+            name="password"
+            value={user.password}
+            onChange={handleValueChange}
+            placeholder="Password"
+          />
           <InputRightElement width="4rem">
             <Button h="40px" size="sm" onClick={handleShow}>
               {show ? 'Hide' : 'Show'}
@@ -88,7 +84,7 @@ const RegisterPage = () => {
           </InputRightElement>
         </InputGroup>
         <Button type="submit">Register</Button>
-      </form>
+      </FormControl>
     </div>
   );
 };
