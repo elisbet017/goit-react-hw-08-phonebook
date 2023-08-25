@@ -12,47 +12,56 @@ const token = {
   },
 };
 
-export const register = createAsyncThunk('auth/register', async credentials => {
-  try {
-    const { data } = await axios.post('/users/signup', credentials);
-    token.set(data.token);
-    return data;
-  } catch (e) {
-    // add error
+export const register = createAsyncThunk(
+  'auth/register',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/users/signup', credentials);
+      token.set(data.token);
+      return data;
+    } catch (e) {
+      return rejectWithValue(e);
+    }
   }
-});
+);
 
-export const login = createAsyncThunk('auth/login', async credentials => {
-  try {
-    const { data } = await axios.post('/users/login', credentials);
-    token.set(data.token);
-    return data;
-  } catch (e) {
-    // add error
+export const login = createAsyncThunk(
+  'auth/login',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/users/login', credentials);
+      token.set(data.token);
+      return data;
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
   }
-});
-export const logout = createAsyncThunk('auth/logout', async () => {
-  try {
-    await axios.post('/users/logout');
-    token.reset();
-  } catch (e) {
-    // add error
+);
+export const logout = createAsyncThunk(
+  'auth/logout',
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post('/users/logout');
+      token.reset();
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
   }
-});
+);
 
 export const getCurrentUser = createAsyncThunk(
   'auth/currentUser',
-  async (_, {rejectWithValue, getState}) => {
+  async (_, { rejectWithValue, getState }) => {
     try {
       const authToken = getState().auth.token;
       if (!authToken) {
-        return rejectWithValue();
+        return rejectWithValue('');
       }
       token.set(authToken);
       const { data } = await axios.get('/users/current');
       return data;
     } catch (e) {
-      // add error
+      return rejectWithValue(e);
     }
   }
 );

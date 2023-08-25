@@ -1,76 +1,93 @@
+import {
+  Button,
+  Flex,
+  Input,
+  InputGroup,
+  InputRightElement,
+} from '@chakra-ui/react';
+import { Notify } from 'notiflix';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/auth-operations';
 
 const RegisterPage = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => {
+    setShow(!show);
+  };
 
   const dispatch = useDispatch();
 
   const handleValueChange = e => {
-    switch (e.target.name) {
-      case 'name': {
-        setName(e.target.value);
-        break;
-      }
-      case 'email': {
-        setEmail(e.target.value);
-        break;
-      }
-      case 'password': {
-        setPassword(e.target.value);
-        break;
-      }
-      default:
-        return;
-    }
+    const field = e.target;
+
+    setUser({ ...user, [field.name]: field.value });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(register({ name, email, password }));
+    dispatch(register(user))
+      .unwrap()
+      .then(() => Notify.success('You are successfully registered'))
+      .catch(() => Notify.failure('Something was wrong :('));
     resetForm();
   };
 
   const resetForm = () => {
-    setName('');
-    setEmail('');
-    setPassword('');
+    setUser({
+      name: '',
+      email: '',
+      password: '',
+    });
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleValueChange}
-          />
-        </label>
-        <label>
-          Email
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleValueChange}
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleValueChange}
-          />
-        </label>
-        <button type="submit">Register</button>
+        <InputGroup gap="20px" justifyContent="center">
+          <label>
+            Name
+            <Input
+              type="text"
+              name="name"
+              value={user.name}
+              onChange={handleValueChange}
+              placeholder="Name"
+            />
+          </label>
+          <label>
+            Email
+            <Input
+              type="email"
+              name="email"
+              value={user.email}
+              onChange={handleValueChange}
+              placeholder="Email"
+            />
+          </label>
+          <label>
+            Password
+            <Input
+              type={show ? 'text' : 'password'}
+              name="password"
+              value={user.password}
+              onChange={handleValueChange}
+              placeholder="Password"
+            />
+          </label>
+          <InputRightElement width="4rem">
+            <Button h="40px" size="sm" onClick={handleShow}>
+              {show ? 'Hide' : 'Show'}
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+        <Button type="submit">Register</Button>
       </form>
     </div>
   );

@@ -13,6 +13,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authSlice } from './auth/auth-slice';
+import { rootReducer } from './root/slice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -27,11 +28,22 @@ export const store = configureStore({
     auth: authReducer,
     contacts: contactReducer,
     filter: filterReducer,
+    root: rootReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        ignoredActions: [
+          FLUSH,
+          REHYDRATE,
+          PAUSE,
+          PERSIST,
+          PURGE,
+          REGISTER,
+          'your/action/type',
+        ],
+        ignoredActionPaths: ['meta.arg', 'payload.timestamp'],
+        ignoredPaths: ['items.dates'],
       },
     }),
 });

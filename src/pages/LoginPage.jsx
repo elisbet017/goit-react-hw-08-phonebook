@@ -1,12 +1,13 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { login } from "redux/auth/auth-operations";
+import { Notify } from 'notiflix';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from 'redux/auth/auth-operations';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleValueChange = e => {
     switch (e.target.name) {
@@ -18,13 +19,16 @@ const LoginPage = () => {
         setPassword(e.target.value);
         break;
       }
-        default: return
+      default:
+        return;
     }
-  }
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(login({ email, password }));
+    dispatch(login({ email, password }))
+      .unwrap()
+      .then(() => Notify.success('You are successfully logged in')).catch(() => Notify.failure('Something was wrong :('));
     resetForm();
   };
 
@@ -58,6 +62,6 @@ const LoginPage = () => {
       </form>
     </div>
   );
-}
+};
 
-export default LoginPage
+export default LoginPage;

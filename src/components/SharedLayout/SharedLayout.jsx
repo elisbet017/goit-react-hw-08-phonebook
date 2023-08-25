@@ -4,7 +4,7 @@ import AuthNav from './AuthNav/AuthNav';
 import Navigation from './Navigation';
 import UserMenu from './UserMenu/UserMenu';
 
-export const SharedLayout = () => {
+const SharedLayout = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
   return (
     <header>
@@ -19,3 +19,5 @@ export const SharedLayout = () => {
     </header>
   );
 };
+
+export default SharedLayout;

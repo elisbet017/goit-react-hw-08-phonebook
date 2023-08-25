@@ -1,12 +1,14 @@
+import { Flex } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';
+import { Link as ChakraLink } from '@chakra-ui/react';
 
 const AuthNav = () => {
   return (
-    <nav>
-      <NavLink to="/register">Registration</NavLink>
-      <NavLink to="/login">Login</NavLink>
-    </nav>
+    <Flex gap="20px" justify="center">
+      <ChakraLink as={NavLink} to="/register">Registration</ChakraLink>
+      <ChakraLink as={NavLink} to="/login">Login</ChakraLink>
+    </Flex>
   );
 };
 
-export default AuthNav
+export default AuthNav;
