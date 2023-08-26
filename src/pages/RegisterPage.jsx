@@ -50,42 +50,74 @@ const RegisterPage = () => {
   };
 
   return (
-    <div>
-      <FormControl onSubmit={handleSubmit} isRequired>
-        <InputGroup gap="20px" justifyContent="center">
-          <FormLabel>Name</FormLabel>
+      <FormControl as="form" onSubmit={handleSubmit} isRequired>
+        <Flex alignItems="center" flexDir="column" gap="5px">
+          <FormLabel htmlFor="register-name">Name</FormLabel>
           <Input
             type="text"
             name="name"
             value={user.name}
             onChange={handleValueChange}
             placeholder="Name"
+            w="350px"
+            focusBorderColor="#9898ff"
+            id="register-name"
           />
-          <FormLabel>Email</FormLabel>
+          <FormLabel htmlFor="register-email">Email</FormLabel>
           <Input
             type="email"
             name="email"
             value={user.email}
             onChange={handleValueChange}
             placeholder="Email"
+            w="350px"
+            focusBorderColor="#9898ff"
+            id="register-email"
           />
-          <FormLabel>Password</FormLabel>
-          <Input
-            type={show ? 'text' : 'password'}
-            name="password"
-            value={user.password}
-            onChange={handleValueChange}
-            placeholder="Password"
-          />
-          <InputRightElement width="4rem">
-            <Button h="40px" size="sm" onClick={handleShow}>
-              {show ? 'Hide' : 'Show'}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
-        <Button type="submit">Register</Button>
+          <FormLabel htmlFor="register-password">Password</FormLabel>
+          <InputGroup w="350px">
+            <Input
+              type={show ? 'text' : 'password'}
+              name="password"
+              value={user.password}
+              onChange={handleValueChange}
+              placeholder="Password"
+              focusBorderColor="#9898ff"
+              id="register-password"
+            />
+            <InputRightElement width="4rem">
+              <Button
+                h="38px"
+                size="sm"
+                onClick={handleShow}
+                backgroundColor="#DFE5E5"
+                variant="solid"
+                w="62px"
+                _hover={{
+                  color: 'white',
+                  backgroundColor: '#9898ff',
+                }}
+              >
+                {show ? 'Hide' : 'Show'}
+              </Button>
+            </InputRightElement>
+          </InputGroup>
+          <Button
+            type="submit"
+            color="white"
+            backgroundColor="#9898ff"
+            variant="solid"
+            w="100px"
+            mt="30px"
+            _hover={{
+              color: 'black',
+              backgroundColor: '#DFE5E5',
+            }}
+          >
+            Register
+          </Button>
+        </Flex>
       </FormControl>
-    </div>
   );
 };
 

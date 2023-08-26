@@ -11,13 +11,6 @@ import HomePage from 'pages/HomePage';
 import { PrivateRoute } from './SharedLayout/PrivateRoute';
 import PublicRoute from './SharedLayout/PublicRoute';
 
-// const HomePage = lazy(() => import('pages/HomePage'));
-// const LoginPage = lazy(() => import('pages/LoginPage'));
-// const RegisterPage = lazy(() => import('pages/RegisterPage'));
-// const Loader = lazy(() => import('./Loader'));
-// const Error = lazy(() => import('./Error'));
-// const SharedLayout = lazy(() => import('./SharedLayout'))
-
 export const App = () => {
 
   const dispatch = useDispatch();

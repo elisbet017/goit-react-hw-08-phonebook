@@ -5,7 +5,7 @@ import ContactForm from 'components/Form';
 import ContactList from 'components/ContactsList';
 import Filter from 'components/Filter';
 import { Block } from 'components/App.styled';
-import { GlobalStyles } from 'utils/GlobalStyles';
+import { Flex, Text } from '@chakra-ui/react';
 
 
 const HomePage = () => {
@@ -15,12 +15,31 @@ const HomePage = () => {
   }, [dispatch]);
   return (
     <Block>
-      <h1>Phonebook</h1>
+      <Text
+        as="h1"
+        color="#9898ff"
+        fontSize="52px"
+        fontWeight="800"
+        textAlign="center"
+        mb="20px"
+      >
+        Phonebook
+      </Text>
       <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
-      <GlobalStyles />
+      <Flex justify="center" border="dotted 3px #9898ffb5" borderRadius='12px' flexDir="column" w='390px' m='0 auto 30px' p='30px 10px' gap='15px'>
+        <Text
+          as="h2"
+          backgroundImage="linear-gradient(90deg, #8e8ef6 0%, #87fef7 100%)"
+          backgroundClip="text"
+          fontSize="24px"
+          fontWeight="700"
+          textAlign="center"
+        >
+          Contacts
+        </Text>
+        <Filter />
+        <ContactList />
+      </Flex>
     </Block>
   );
 };

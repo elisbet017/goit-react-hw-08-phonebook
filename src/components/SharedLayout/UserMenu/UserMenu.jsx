@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from 'redux/auth/auth-operations';
 import { getUserEmail } from 'redux/auth/auth-selectors';
-import { Avatar, Flex } from '@chakra-ui/react';
+import { Avatar, Button, Flex } from '@chakra-ui/react';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
@@ -10,12 +10,24 @@ const UserMenu = () => {
     dispatch(logout());
   }
   return (
-    <Flex justify="end" gap="20px" align='center'>
-      <Avatar src="https://bit.ly/broken-link" w='40px' h='40px'/>
+    <Flex justify="end" gap="15px" align="center">
+      <Avatar src="https://bit.ly/broken-link" w="40px" h="40px" />
       <p>{email}</p>
-      <button type="button" onClick={handleLogout}>
+      <Button
+        type="button"
+        color="white"
+        backgroundColor="#9898ff"
+        variant="solid"
+        w="100px"
+        h='36px'
+        _hover={{
+          color: 'black',
+          backgroundColor: '#DFE5E5',
+        }}
+        onClick={handleLogout}
+      >
         Logout
-      </button>
+      </Button>
     </Flex>
   );
 };
