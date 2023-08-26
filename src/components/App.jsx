@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router-dom';
 import { getCurrentUser } from 'redux/auth/auth-operations';
 import SharedLayout from './SharedLayout/SharedLayout';
 import Loader from './Loader/Loader';
-import Error from './Error/Error';
 import RegisterPage from 'pages/RegisterPage';
 import LoginPage from 'pages/LoginPage';
 import HomePage from 'pages/HomePage';
@@ -23,7 +22,6 @@ export const App = () => {
     <>
       <Loader />
       <SharedLayout />
-      <Error />
       <Routes>
         <Route
           path="/register"
