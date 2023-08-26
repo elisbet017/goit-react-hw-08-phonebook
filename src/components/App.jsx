@@ -21,8 +21,8 @@ export const App = () => {
 
   return (
     <>
-      <SharedLayout />
       <Loader />
+      <SharedLayout />
       <Error />
       <Routes>
         <Route
@@ -53,7 +53,6 @@ export const App = () => {
     </>
   );
 };
-// лоадер пофіксити
 // обробити помилки після діспачу
 // почистити папки
 // почистити код

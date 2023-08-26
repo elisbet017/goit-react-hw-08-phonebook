@@ -24,7 +24,8 @@ const AuthNav = () => {
         backgroundColor="#fff"
         _hover={{
           color: 'black',
-          bgGradient: 'linear-gradient(135deg, rgba(152,152,255,1) 0%, rgba(120,255,247,1) 100%)',
+          bgGradient:
+            'linear-gradient(135deg, rgba(152,152,255,1) 0%, rgba(120,255,247,1) 100%)',
         }}
       >
         Login

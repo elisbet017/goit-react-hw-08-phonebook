@@ -1,3 +1,4 @@
+import { Box, Spinner } from '@chakra-ui/react';
 import { useSelector } from 'react-redux';
 import { selectIsLoading } from 'redux/root/selectors';
 
@@ -6,11 +7,9 @@ const Loader = () => {
   return (
     <>
       {isLoading && (
-        <div className="d-flex justify-content-center">
-          <div className="spinner-border text-info" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>
-        </div>
+        <Box pos='fixed' zIndex='323' w='100vw' h='100vh' bgColor='#ffffffad'>
+          <Spinner color="#21215d" pos='absolute' top='50%' left='50%' size='lg'/>
+        </Box>
       )}
     </>
   );
