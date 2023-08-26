@@ -2,12 +2,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from 'redux/auth/auth-operations';
 import { getUserEmail } from 'redux/auth/auth-selectors';
 import { Avatar, Button, Flex } from '@chakra-ui/react';
+import { Notify } from 'notiflix';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
   const email = useSelector(getUserEmail);
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(logout())
+      .unwrap()
+      .then(() => Notify.success('You are successfully logged out'))
+      .catch(() => Notify.failure('Something was wrong :('));
   }
   return (
     <Flex justify="end" gap="15px" align="center">

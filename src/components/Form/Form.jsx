@@ -32,7 +32,10 @@ const ContactForm = () => {
     if (isExisted) {
       return Notify.warning(`${contact.name} is already in contacts`);
     }
-    dispatch(addContact(contact));
+    dispatch(addContact(contact))
+      .unwrap()
+      .then()
+      .catch(() => Notify.failure('Something was wrong :('));
   };
 
   const reset = () => {

@@ -7,8 +7,8 @@ import Loader from './Loader/Loader';
 import RegisterPage from 'pages/RegisterPage';
 import LoginPage from 'pages/LoginPage';
 import HomePage from 'pages/HomePage';
-import { PrivateRoute } from './SharedLayout/PrivateRoute';
-import PublicRoute from './SharedLayout/PublicRoute';
+import { PrivateRoute } from './SharedLayout/routes/PrivateRoute';
+import PublicRoute from './SharedLayout/routes/PublicRoute';
 
 export const App = () => {
 
@@ -51,6 +51,5 @@ export const App = () => {
     </>
   );
 };
-// обробити помилки після діспачу
 // почистити папки
 // почистити код

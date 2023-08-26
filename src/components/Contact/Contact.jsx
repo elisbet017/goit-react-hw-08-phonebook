@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/contacts-operations';
 import { Button, Flex, Text } from '@chakra-ui/react';
+import { Notify } from 'notiflix';
 
 const Contact = ({ contact: { name, number, id } }) => {
   const dispatch = useDispatch();
@@ -15,7 +16,10 @@ const Contact = ({ contact: { name, number, id } }) => {
       <Button
         type="button"
         onClick={() => {
-          dispatch(deleteContact(id));
+          dispatch(deleteContact(id))
+            .unwrap()
+            .then()
+            .catch(() => Notify.failure('Something was wrong :('));
         }}
         color="black"
         bgGradient=" linear-gradient(135deg, rgba(223, 229, 229, 1) 0%, rgba(223, 229, 229, 1) 100%)"

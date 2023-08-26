@@ -4,7 +4,6 @@ import { getAllContacts } from 'redux/contacts/contacts-operations';
 import ContactForm from 'components/Form';
 import ContactList from 'components/ContactsList';
 import Filter from 'components/Filter';
-import { Block } from 'components/App.styled';
 import { Flex, Text } from '@chakra-ui/react';
 
 
@@ -14,7 +13,7 @@ const HomePage = () => {
     dispatch(getAllContacts());
   }, [dispatch]);
   return (
-    <Block>
+    <>
       <Text
         as="h1"
         color="#9898ff"
@@ -40,7 +39,7 @@ const HomePage = () => {
         <Filter />
         <ContactList />
       </Flex>
-    </Block>
+    </>
   );
 };
 
