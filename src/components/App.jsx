@@ -19,7 +19,6 @@ export const App = () => {
 
   return (
     <>
-      {/* <SharedLayout /> */}
       <Loader />
       <Routes>
         <Route path="/" element={<SharedLayout />}>
