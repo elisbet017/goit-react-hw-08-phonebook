@@ -11,7 +11,6 @@ import { PrivateRoute } from './SharedLayout/routes/PrivateRoute';
 import PublicRoute from './SharedLayout/routes/PublicRoute';
 
 export const App = () => {
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,35 +20,34 @@ export const App = () => {
   return (
     <>
       <Loader />
-      <SharedLayout />
       <Routes>
-        <Route
-          path="/register"
-          element={
-            <PublicRoute>
-              <RegisterPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <PublicRoute>
-              <LoginPage />
-            </PublicRoute>
-          }
-        />
-        <Route
-          path="/contacts"
-          element={
-            <PrivateRoute>
-              <HomePage />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/" element={<SharedLayout />}>
+          <Route
+            path="register"
+            element={
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path="contacts"
+            element={
+              <PrivateRoute>
+                <HomePage />
+              </PrivateRoute>
+            }
+          />
+        </Route>
       </Routes>
     </>
   );
 };
-// почистити папки
-// почистити код
