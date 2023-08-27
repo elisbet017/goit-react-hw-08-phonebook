@@ -19,9 +19,9 @@ export const App = () => {
 
   return (
     <>
+      <SharedLayout />
       <Loader />
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
           <Route
             path="/register"
             element={
@@ -46,7 +46,6 @@ export const App = () => {
               </PrivateRoute>
             }
           />
-        </Route>
       </Routes>
     </>
   );
