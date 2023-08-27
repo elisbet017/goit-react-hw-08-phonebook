@@ -3,7 +3,6 @@ import { getIsLoggedIn } from 'redux/auth/auth-selectors';
 import AuthNav from './AuthNav/AuthNav';
 import UserMenu from './UserMenu/UserMenu';
 import { Box } from '@chakra-ui/react';
-import { Outlet } from 'react-router-dom';
 
 const SharedLayout = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
@@ -18,7 +17,7 @@ const SharedLayout = () => {
           <AuthNav />
         )}
       </Box>
-      <Outlet/>
+      {/* <Outlet/> */}
     </>
   );
 };
