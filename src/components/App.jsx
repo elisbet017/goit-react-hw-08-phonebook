@@ -19,11 +19,12 @@ export const App = () => {
 
   return (
     <>
-      <SharedLayout />
+      {/* <SharedLayout /> */}
       <Loader />
       <Routes>
+        <Route path="/" element={<SharedLayout />}>
           <Route
-            path="/register"
+            path="register"
             element={
               <PublicRoute>
                 <RegisterPage />
@@ -31,7 +32,7 @@ export const App = () => {
             }
           />
           <Route
-            path="/login"
+            path="login"
             element={
               <PublicRoute>
                 <LoginPage />
@@ -39,13 +40,14 @@ export const App = () => {
             }
           />
           <Route
-            path="/contacts"
+            path="contacts"
             element={
               <PrivateRoute>
                 <HomePage />
               </PrivateRoute>
             }
           />
+        </Route>
       </Routes>
     </>
   );
