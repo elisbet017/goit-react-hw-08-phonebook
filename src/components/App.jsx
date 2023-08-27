@@ -9,6 +9,7 @@ import LoginPage from 'pages/LoginPage';
 import HomePage from 'pages/HomePage';
 import { PrivateRoute } from './SharedLayout/routes/PrivateRoute';
 import PublicRoute from './SharedLayout/routes/PublicRoute';
+import { Home } from 'pages/Home';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ export const App = () => {
       <Loader />
       <Routes>
         <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home/>} />
           <Route
             path="/register"
             element={
