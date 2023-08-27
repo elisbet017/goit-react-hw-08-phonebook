@@ -18,9 +18,7 @@ const SharedLayout = () => {
           <AuthNav />
         )}
       </Box>
-        <main>
-          <Outlet />
-        </main>
+      <Outlet />
     </>
   );
 };
