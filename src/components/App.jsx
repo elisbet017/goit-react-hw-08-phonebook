@@ -19,34 +19,35 @@ export const App = () => {
 
   return (
     <>
+      <SharedLayout />
       <Loader />
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route
-            path="register"
-            element={
-              <PublicRoute>
-                <RegisterPage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <PublicRoute>
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="contacts"
-            element={
-              <PrivateRoute>
-                <HomePage />
-              </PrivateRoute>
-            }
-          />
-        </Route>
+        {/* <Route path="/" element={<SharedLayout />}> */}
+        <Route
+          path="/register"
+          element={
+            <PublicRoute>
+              <RegisterPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute>
+              <HomePage />
+            </PrivateRoute>
+          }
+        />
+        {/* </Route> */}
       </Routes>
     </>
   );
